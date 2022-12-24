@@ -1,8 +1,16 @@
 // Import the data to customize and insert them into page
+
+function play() {
+  var audio = new Audio('../song.mp3');
+  audio.play();
+}
+
 const fetchData = () => {
+  play()
   fetch("customize.json")
     .then(data => data.json())
     .then(data => {
+      
       dataArr = Object.keys(data);
       dataArr.map(customData => {
         if (data[customData] !== "") {
@@ -25,8 +33,11 @@ const fetchData = () => {
 };
 
 // Animation Timeline
+
 const animationTimeline = () => {
+  
   // Spit chars that needs to be animated individually
+
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
 
@@ -298,8 +309,10 @@ const animationTimeline = () => {
   // Restart Animation on click
   const replyBtn = document.getElementById("replay");
   replyBtn.addEventListener("click", () => {
+    play()
     tl.restart();
   });
+ 
 };
 
 // Run fetch and animation in sequence
